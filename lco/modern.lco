@@ -1,0 +1,128 @@
+\ProvidesFile{modernLetter.lco}%
+             [2007/12/05 v0.2]%
+
+\RequirePackage{graphicx}
+\RequirePackage[ngerman]{babel}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{charter}
+
+\usepackage[scaled=.92]{helvet}
+
+\setkomafont{refvalue}{\fontsize{10}{11}\sffamily}
+
+\LoadLetterOption{DIN}%
+
+\newkomavar[Steuerangaben]{taxinformation}
+\newkomavar[Kontaktinformationen]{contactinformation}
+\newkomavar[Mobil]{mobileseparator}
+\setkomavar{mobileseparator}{\usekomavar{phoneseparator}}
+\newkomavar[%
+  \usekomavar*{mobileseparator}%
+  \usekomavar{mobileseparator}%
+]{frommobile}
+
+\setlength{\oddsidemargin}{\useplength{toaddrhpos}}%
+\addtolength{\oddsidemargin}{-1in}%
+
+% Dafuer sorgen, dass die Verschiebung jetzt aktiviert wird
+\KOMAoptions{%
+  DIV=9,%
+  fromalign=right,%
+  fromurl,%
+  enlargefirstpage%
+}
+\setlength{\oddsidemargin}{\useplength{toaddrhpos}}%
+\addtolength{\oddsidemargin}{-1in}%
+\@setplength{firstheadvpos}{0pt}%
+\@setplength{firstheadwidth}{\paperwidth}%
+\@setplength{firstfootvpos}{\paperheight}%
+\@addtoplength[-]{firstfootvpos}{-2cm}%
+\@setplength{firstfootwidth}{\paperwidth}
+\@addtoplength{refvpos}{-1.5\baselineskip}%
+\@newplength{infocolwidth}%
+\@setplength{infocolwidth}{.21\paperwidth}
+\@addtoplength[-]{infocolwidth}{.5cm}
+
+
+\setkomavar{firsthead}{%
+  \fontsize{7}{10}\sffamily
+  \begin{picture}(0,0)
+    \put(0,0){\parbox[t]{\useplength{firstheadwidth}}{%
+        \fontsize{10}{12}\selectfont
+        \vspace{1cm}%
+        \hfill\begin{tabular}{@{}r@{}}
+          \usekomavar{fromname}\\
+          \usekomavar{fromaddress}\\
+       \end{tabular}\hspace{1cm}
+      }%
+    }%
+  \end{picture}%
+  \hspace*{\fill}%
+  \begin{picture}(0,0)%
+    \put(0,0){\parbox[t]{\useplength{infocolwidth}}{%
+        \raggedright
+        \vspace{\useplength{toaddrvpos}}%
+        \vspace{\useplength{backaddrheight}}%
+        \bfseries%
+        \usekomavar{place}\usekomavar{placeseparator}
+        \usekomavar{date}
+      }%
+    }%
+    \put(0,0){\parbox[t]{\useplength{infocolwidth}}{%
+        \raggedright
+        \vspace{\useplength{refvpos}}%
+        \vspace{\useplength{refaftervskip}}%
+		    \textbf{\usekomavar*{contactinformation}}\\
+		    \ifkomavarempty{fromphone}{}{
+          \usekomavar*{fromphone}\usekomavar{fromphone}\\}
+		    \ifkomavarempty{frommobile}{}{
+          \usekomavar*{frommobile}\usekomavar{frommobile}\\}
+		    \ifkomavarempty{fromemail}{}{
+      	  \usekomavar*{fromemail}\usekomavar{fromemail}\\}
+		    \ifkomavarempty{fromurl}{}{
+      	  \usekomavar*{fromurl}\usekomavar{fromurl}}
+		    \ifkomavarempty{frombank}{}{
+          \vspace{5\baselineskip}\\
+          \textbf{\usekomavar*{frombank}}\\
+		      \usekomavar{frombank}}
+		    \ifkomavarempty{taxinformation}{}{
+          \vspace{5\baselineskip}\\
+          \textbf{\usekomavar*{taxinformation}}\\
+      	  \usekomavar{taxinformation}}{}
+      }%
+    }%
+  \end{picture}%
+  {\@addtoplength{infocolwidth}{.5cm}%
+  \hspace*{\useplength{infocolwidth}}}%
+}%
+\l@addto@macro\@firstheadfootfield{\setkomavar{date}{}}
+\setkomavar{firstfoot}{}%
+\setkomavar{nexthead}{%
+  \begingroup
+    \@tempswatrue
+    \if@twoside\ifodd\number\value{page}
+        \else\@tempswafalse\fi\fi
+    \if@tempswa
+      \makebox[0pt][l]{%
+        \hspace*{-\oddsidemargin}\hspace{-1in}%
+        \hspace{\paperwidth}%
+        \hspace{-\useplength{infocolwidth}}%
+        \normalfont\fontsize{7}{8}\sffamily
+        \begin{picture}(0,0)
+          \put(0,0){\parbox[t]{\useplength{infocolwidth}}{%
+              \vspace*{-\topmargin}\vspace{-1in}%
+              \vspace{-\headheight}%
+              \vspace{\useplength{toaddrvpos}}%
+              \begin{tabular}{@{}c@{}}
+                % \usekomavar{fromlogo}\\
+              \end{tabular}%
+            }%
+          }%
+        \end{picture}%
+      }%
+    \fi
+  \endgroup
+}%
+\pagestyle{headings}%
+\let\raggedsignature\raggedright
+\endinput
