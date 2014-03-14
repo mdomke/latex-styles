@@ -1,0 +1,34 @@
+\ProvidesFile{classicLetter.lco}[2007/12/05 klassisches Brieflayout]%
+
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[ngerman]{babel}
+\RequirePackage{graphicx}
+\RequirePackage{charter}
+%\RequirePackage[scaled=.92]{helvet}
+
+\newkomavar[%
+  \usekomavar*{mobileseparator}%
+  \usekomavar{mobileseparator}%
+]{frommobile}
+
+\newkomavar[Mobil]{mobileseparator}
+\setkomavar{mobileseparator}{\usekomavar{phoneseparator}}
+
+\setkomafont{fromname}{\fontsize{12}{12}\sffamily}
+\setkomafont{fromaddress}{\fontsize{10}{11}\sffamily}
+\setkomafont{refvalue}{\fontsize{10}{11}\sffamily}
+
+\@setplength{firstfootvpos}{\paperheight}
+\@addtoplength{firstfootvpos}{-2cm}
+\let\raggedsignature\raggedright
+
+\KOMAoptions{%
+  DIV=15,%
+	fromemail=true,%
+	fromurl=false,%
+	fromalign=center,%
+	fromrule=aftername,%
+  enlargefirstpage=true
+}
+\endinput

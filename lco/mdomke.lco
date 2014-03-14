@@ -1,0 +1,18 @@
+\ProvidesFile{mdomke.lco}[2007/12/05 Adressinformationen für Martin Domke]
+
+\setkomavar{fromname}{Martin Domke}
+\setkomavar{fromaddress}{Odenwaldstraße 7\\20255 Hamburg}
+\setkomavar{place}{Hamburg}
+\setkomavar{date}{\today}
+\setkomavar{fromurl}{http://martindomke.net}
+\setkomavar{frombank}{%
+  Kontonr.: 7000\,534\,100\\
+  GLS Gemeinschaftsbank eG\\
+  BLZ:~430\,609\,67\\
+  IBAN:~DE42\,4306\,0967\,7000\,5341\,00\\
+  SWIFT-BIC:~GENO\,DE\,M\,1\,GLS}
+% \setkomavar{fromphone}{+49\,421~430\,16\,94}
+\setkomavar{frommobile}{+49\,179~7\,360\,290}
+\setkomavar{fromemail}{mail@martindomke.net}
+
+\endinput
