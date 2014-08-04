@@ -6,7 +6,7 @@
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{charter}
 
-\usepackage[scaled=.92]{helvet}
+\RequirePackage[scaled=0.95]{helvet}
 
 \setkomafont{refvalue}{\fontsize{10}{11}\sffamily}
 

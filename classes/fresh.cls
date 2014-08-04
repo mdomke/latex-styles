@@ -11,7 +11,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english,ngerman]{babel}
 
-\usepackage[ngerman]{varioref}
+% \usepackage[ngerman]{varioref}
 \usepackage[right]{eurosym}		% \euro{} \EUR{...}
 %\usepackage{myriad}				% sf
 \renewcommand{\sfdefault}{pmy}
@@ -42,6 +42,8 @@
   ,amsmath      % Verbesserte Mathematikumgebungen
   ,units        % Einheitenbrüche
 }
+
+\usepackage{scrjura}
 
 \usepackage[%
   breaklinks               % Links »überstehen« Zeilenumbruch
