@@ -1,7 +1,5 @@
-% myClass.cls     Created by Martin Domke
-% ---------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{rn2}
+\ProvidesClass{exercises}
 \LoadClass[11pt,a4paper,twoside]{scrartcl}
 \usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
@@ -34,8 +32,7 @@
 
 % -----------------------------------------------------------------------
 % Main macros
-\renewcommand{\maketitle}[4]
-    {\@maketitle{#1}{#2}{#3}{#4}}
+\renewcommand{\maketitle}[4]{\@maketitle{#1}{#2}{#3}{#4}}
 \renewcommand\thesection{Aufgabe \arabic{section}}
 \newcommand\skipsection{\stepcounter{section}}
 
